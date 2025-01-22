@@ -1,6 +1,9 @@
+"use client"
+
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
 import Link from 'next/link';
+import { toast } from "sonner"
 
 export default function Home() {
   return (
@@ -13,7 +16,17 @@ export default function Home() {
           </div>
           <div className="flex items-center space-x-4">
             <Link href={'https://cotacaoglobal.info/'} target='_blank' className='underline underline-offset-4 cursor-pointer flex items-end'>Live exchange</Link>
-            <Link href="/Ocurrency.zip" passHref className='underline underline-offset-4 cursor-pointer flex items-end'>Download</Link>
+            <Link href="/Ocurrency.zip" passHref className='underline underline-offset-4 cursor-pointer flex items-end'
+              onClick={() =>
+                toast("Thank you for downloading Ocurrency!", {
+                  description: "Your download will start shortly",
+                  action: {
+                    label: "Close",
+                    onClick: () => console.log("Close"),
+                  },
+                })
+              }
+            >Download</Link>
           </div>
         </div>
       </div>
